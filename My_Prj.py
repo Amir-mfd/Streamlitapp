@@ -32,19 +32,21 @@ else:
         Conditions = Conditions & genre_Condition
     
     
-    def repp2(actors):
-        return actors.split(',')
-    actor_series = Movies['Actors'].apply(repp2)
+    def repp(string):
+        return string.split(',')
+    actor_series = Movies['Actors'].apply(repp)
     set_actors = set()
-    for actors in actor_series:
-        for a in actors:
-            set_actors.add(a.strip())
-    user_actors = st.multiselect('Select actors',sorted(set_actors))   
-    if len(user_actors)>0:
-        actors_Condition = Movies['Actors'].str.contains(user_actors[0])
+    for actor_list in actor_series:
+        for act in actor_list:
+            set_actors.add(act.strip())
+
+    user_actors = st.multiselect('select actors', sorted(set_actors) )
+    if len(user_actors) >0:
+        act_condition = Movies['Actors'].str.contains(user_actors[0])
         for user_act in user_actors:
-            actors_Condition = actors_Condition & Movies['Actors'].str.contains(user_actors)
-        Conditions = Conditions & actors_Condition
+            act_condition = act_condition & Movies['Actors'].str.contains(user_act)
+
+        Conditions = Conditions & act_condition
 
 
 

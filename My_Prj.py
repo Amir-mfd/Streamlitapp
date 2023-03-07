@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-Movies = pd.read_csv('IMDB-Movie-Data.CSV')
+Movies = pd.read_csv('IMDB-Movie-Data.csv')
 st.title("What to watch?")
 st.subheader('Find your desired movie among 1000 titles:')
 '--------'
